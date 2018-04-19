@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}新建闲置物品{% endblock %}
+
+{% block body %}
+	<div id="wrap">
+        <h2>基本信息：</h2>
+        {% for gi in goods_info %}
+            {% if gi.picture %}
+                <div>已上传的图片：<img id="show_picture" src="/static/images/{{ gi.picture }}" alt="图片" />
+            {% else %}
+                <h4></h4>
+            {% endif %}
+            <form method="post" action="/goods/post" class="form">
+                <input type="hidden" name="id" value="{{ gi.id }}">
+                <input type="hidden" name="ui" value="{{ gi.ui }}">
+                <div class="form-group"><label >名称：</label>
+                  <input type="text" name="goods" placeholder="goods" value="{{ gi.goods }}" class="form-control">
+                </div>
+                <div class="form-group"><label >大小：</label>
+                  <input type="text" name="size" value="{{ gi.size }}" placeholder="size" class="form-control">
+                </div>
+                <div class="form-group"><label >材质：</label>
+                  <input type="text" name="material" value="{{ gi.material }}" placeholder="material" class="form-control">
+                </div>
+                <div class="form-group"><label >描述：</label>
+                  <input type="text" name="desc" value="{{ gi.desc }}" placeholder="desc" class="form-control">
+                </div>
+                <div class="form-group"><label >价格：</label>
+                  <input type="text" name="prize" value="{{ gi.prize }}" placeholder="prize" class="form-control">
+                </div>
+                <div class="form-group"><label >手机：</label>
+                  <input type="text" name="telephone" value="{{ gi.telephone }}" placeholder="telephone" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success" >保存物品</button>
+                <a class="btn btn-success" href="/goods/picture/{{gi.id}}" >添加物品图片</a>
+            </form>
+        {% endfor %}
+        <br/>
+        <a class="btn btn-success" href="javascript:void(0);" onclick="$('#goods_info').show();">添加物品</a>
+        <form method="post" id="goods_info" action="/goods/post" class="form" style="display:none;">
+            <input type="hidden" name="id" value="{{ goods_info.id }}">
+            <input type="hidden" name="ui" value="{{ goods_info.ui }}">
+            <div class="form-group"><label >名称：</label>
+              <input type="text" name="goods" placeholder="goods" value="{{ goods_info.goods }}" class="form-control">
+            </div>
+            <div class="form-group"><label >大小：</label>
+              <input type="text" name="size" value="{{ goods_info.size }}" placeholder="size" class="form-control">
+            </div>
+            <div class="form-group"><label >材质：</label>
+              <input type="text" name="material" value="{{ goods_info.material }}" placeholder="material" class="form-control">
+            </div>
+            <div class="form-group"><label >描述：</label>
+              <input type="text" name="desc" value="{{ goods_info.desc }}" placeholder="desc" class="form-control">
+            </div>
+            <div class="form-group"><label >价格：</label>
+              <input type="text" name="prize" value="{{ goods_info.prize }}" placeholder="prize" class="form-control">
+            </div>
+            <div class="form-group"><label >手机：</label>
+              <input type="text" name="telephone" value="{{ goods_info.telephone }}" placeholder="telephone" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success" >保存</button>
+        </form>
+	</div>  <!-- wrap end -->
+{% endblock %}

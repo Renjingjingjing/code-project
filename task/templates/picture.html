@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}简历页{% endblock %}
+
+{% block body %}
+	<div id="wrap">
+        <h2>添加物品图片：</h2>
+        {% if goods_info.picture %}
+            <div>已上传的图片：<a href="/static/images/{{ goods_info.picture }}">{{ goods_info.picture }}</a></div>
+        {% else %}
+            <h4>图片</h4>
+        {% endif %}
+        <form method="post" action="/goods/upload" enctype="multipart/form-data" >
+            <input type="hidden" name="id" value="{{ goods_info.id }}">
+            <label for="picture"></label>
+            <img id="show_picture" src="/static/images/{{ goods_info.picture }}" alt="图片" /><br/>
+            <input type="file" id="picture" name="picture">
+            <!--<input type="file" id="picture" name="picture" accept="image/*" />-->
+            <!--{{uf.as_p}}-->
+            <button type="submit" class="btn btn-success" >上传</button>
+        </form>
+
+        <!--<form action="/picture" method="POST" enctype="multipart/form-data">-->
+            <!--<div class="updateImg">-->
+            <!--<img src="/static/images/{{ goods_info.picture }}" alt=""/> </div>-->
+            <!--<input name="picture" type="file" id="exampleInputFile">-->
+            <!--<button id="picture" class="btn btn-danger" type="submit">上传图片</button>-->
+	</div>  <!-- wrap end -->
+
+
+{% endblock %}

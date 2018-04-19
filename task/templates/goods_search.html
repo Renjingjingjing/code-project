@@ -1,0 +1,20 @@
+﻿{% extends "base.html" %}
+
+{% block title %}物品搜索结果页{% endblock %}
+
+{% block body %}
+
+	<div id="wrap">
+		<div id="content">
+            <h2> 物品搜索结果：</h2>
+            <article id="post_list">
+            {% for i in goods_list %}
+                <p>goods name： {{ i.goods }} ==>prize： {{ i.prize }} ==>size: {{ i.size }} ==> material: {{ i.material }}
+                    ==>telephone: {{ i.telephone }} ==>上传时间：{{ i.create_date }}==>status: {{ i.is_available }} </p>
+            {% endfor %}
+            </article>
+		</div>
+	</div>  <!-- wrap end -->
+
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}首页{% endblock %}
+
+{% block body %}
+     <div class="jumbotron">
+        <h1>闲置物品交易网</h1>
+        <p>【声明】闲置物品交易就来这！</p>
+     </div>
+
+    <form class="form-inline" action="/goods/search" method="post">
+      <div class="form-group">
+        <label for="goodsSearch">商品搜索：</label>
+        <input type="text" class="form-control" name="keywords" id="goodsSearcher" placeholder="for example：iphone">
+      </div>
+      <button type="submit" class="btn btn-default">搜索</button>
+    </form>
+
+	<div id="wrap">
+		<!-- 轮播主题  -->
+		<div id="content">
+            <article id="user"><h1>Users:</h1>
+            {% for i in users %}
+                <p> {{ i.id }} => {{ i.name }} => {{ i.email }} </p>
+            {% endfor %}
+            </article>
+            <article id="goods"><h1>trade goods:</h1>
+            {% for i in goods %}
+                <p>{{ i.id }} => {{ i.goods }} => {{ i.desc }} => {{ i.prize }}</p>
+            {% endfor %}
+            </article>
+		</div>
+	</div>  <!-- wrap end -->
+{% endblock %}
